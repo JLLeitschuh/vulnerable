@@ -2,8 +2,6 @@
     <security-constraint>
         <web-resource-collection>
             <url-pattern>/vulnerable/*</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>PUT</http-method>
         </web-resource-collection>
         <auth-constraint>
             <role-name>administrator</role-name>
