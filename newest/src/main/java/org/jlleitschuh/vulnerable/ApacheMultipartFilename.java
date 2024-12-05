@@ -1,5 +1,6 @@
 package org.jlleitschuh.vulnerable;
 
+import io.github.pixee.security.Filenames;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -17,7 +18,7 @@ public class ApacheMultipartFilename {
         ServletFileUpload servletFileUpload = new ServletFileUpload(factory);
         List<FileItem> items = servletFileUpload.parseRequest(request);
         for (FileItem item : items) {
-            File f = new File("uploadDir", item.getName());
+            File f = new File("uploadDir", Filenames.toSimpleFileName(item.getName()));
             FileOutputStream os = new FileOutputStream(f);
         }
     }
